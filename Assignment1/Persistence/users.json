@@ -8,5 +8,10 @@
     "Username": "User1",
     "Password": "User1",
     "IsRegistered": true
+  },
+  {
+    "Username": "User1",
+    "Password": "User1",
+    "IsRegistered": true
   }
 ]

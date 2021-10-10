@@ -1,41 +1,11 @@
 [
   {
     "JobTitle": {
-      "JobTitle": "Business Development Manager",
-      "Salary": 71456
-    },
-    "Id": 2,
-    "FirstName": "Samara",
-    "LastName": "Humphrey",
-    "HairColor": "Black",
-    "EyeColor": "Brown",
-    "Age": 34,
-    "Weight": 37,
-    "Height": 145,
-    "Sex": "F"
-  },
-  {
-    "JobTitle": {
-      "JobTitle": "Skin Care Specialist",
-      "Salary": 20545
-    },
-    "Id": 3,
-    "FirstName": "Chaya",
-    "LastName": "Mcclure",
-    "HairColor": "Black",
-    "EyeColor": "Brown",
-    "Age": 59,
-    "Weight": 32.4,
-    "Height": 167,
-    "Sex": "F"
-  },
-  {
-    "JobTitle": {
       "JobTitle": "Vice Principal",
       "Salary": 72901
     },
     "Id": 4,
-    "FirstName": "Ophelia",
+    "FirstName": "Ophelia 123",
     "LastName": "Nathan",
     "HairColor": "Black",
     "EyeColor": "Brown",
