@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Assignment1.Data.Impl
+@namespace LoginComponent
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+<AuthorizeView>
+    <NotAuthorized>
+        <div class="login-container">
+            <div class="input-container">
+                <input class="form-control" type="text" placeholder="Username" id="username" name="username" @bind-value="username" />
+                <input class="form-control" type="password" placeholder="Password" id="password" name="password" @bind-value="password" />
+                <button class="btn btn-primary" @onclick="HandleLogin">Log in</button>
+            </div>
+            @{
+                // prevent error message from moving inputs
+                if (errorMessage == null || errorMessage.Equals(""))
+                {
+                <div class="error-message">&nbsp;</div>
+                }
+                else
+                {
+                <div class="error-message">@errorMessage</div>
+                }
+            }
+        </div>
+    </NotAuthorized>
+    <Authorized>
+        <button class="btn btn-danger" @onclick="HandleLogout">Log out</button>
+    </Authorized>
+</AuthorizeView>
+
+@code {
+    private string username, password, errorMessage;
+
+    public async Task HandleLogin()
+    {
+        errorMessage = "";
+        try
+        {
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(username, password);
+            username = "";
+            password = "";
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message;
+        }
+    }
+
+    public async Task HandleLogout()
+    {
+        errorMessage = "";
+        username = "";
+        password = "";
+        try
+        {
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).Logout();
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception e) { }
+    }
+}

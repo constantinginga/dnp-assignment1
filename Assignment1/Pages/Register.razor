@@ -1,0 +1,34 @@
+﻿@page "/register"
+@using Assignment1.Data
+@using Assignment1.Data.Impl
+@using Assignment1.Models
+
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>Register</h3>
+<EditForm class="adult-form" Model="@newUser" OnValidSubmit="@HandleRegister">
+<DataAnnotationsValidator />
+<ValidationSummary />
+<div class="form-group">
+    <p>Username</p>
+    <InputText class="form-control" @bind-Value="newUser.Username" placeholder="Enter username"/>
+</div>
+<div class="form-group">
+    <p>Password</p>
+    <InputText class="form-control" @bind-Value="newUser.Password" type="password" placeholder="Enter password"/>
+</div>
+<button type="submit" class="btn btn-success">Register</button>
+</EditForm>
+
+@code {
+    private User newUser = new User();
+
+    private void HandleRegister()
+    {
+        UserService.Add(newUser);
+        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).ValidateLogin(newUser.Username, newUser.Password);
+        NavigationManager.NavigateTo("/");
+    }
+}
